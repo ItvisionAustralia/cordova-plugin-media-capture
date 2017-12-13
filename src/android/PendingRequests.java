@@ -162,6 +162,7 @@ public class PendingRequests {
         private static final String DURATION_KEY = "duration";
         private static final String QUALITY_KEY = "quality";
         private static final String RESULTS_KEY = "results";
+        private static final String MAXBYTES_KEY = "maxbytes";
 
         // Unique int used to identify this request in any Android Permission or Activity callbacks
         public int requestCode;
@@ -178,6 +179,9 @@ public class PendingRequests {
         // Quality level for video capture 0 low, 1 high (CAPTURE_VIDEO only)
         public int quality = 1;
 
+        // Maximum file size for a recording made by the SoundRecorder application (CAPTURE_VIDEO only)
+        public long maxbytes = 0;
+
         // The array of results to be returned to the javascript callback on success
         public JSONArray results = new JSONArray();
 
@@ -192,6 +196,7 @@ public class PendingRequests {
                 this.limit = options.optLong("limit", 1);
                 this.duration = options.optInt("duration", 0);
                 this.quality = options.optInt("quality", 1);
+                this.maxbytes = options.optLong("maxbytes", 0);
             }
 
             this.requestCode = incrementCurrentReqId();
@@ -203,6 +208,7 @@ public class PendingRequests {
             this.action = bundle.getInt(ACTION_KEY);
             this.limit = bundle.getLong(LIMIT_KEY);
             this.duration = bundle.getInt(DURATION_KEY);
+            this.maxbytes = bundle.getLong(MAXBYTES_KEY);
             this.quality = bundle.getInt(QUALITY_KEY);
 
             try {
@@ -220,6 +226,7 @@ public class PendingRequests {
             bundle.putLong(LIMIT_KEY, this.limit);
             bundle.putInt(DURATION_KEY, this.duration);
             bundle.putInt(QUALITY_KEY, this.quality);
+            bundle.putLong(MAXBYTES_KEY, this.maxbytes);
             bundle.putString(RESULTS_KEY, this.results.toString());
 
             return bundle;

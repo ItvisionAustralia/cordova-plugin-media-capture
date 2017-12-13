@@ -179,7 +179,7 @@ public class PendingRequests {
         // Quality level for video capture 0 low, 1 high (CAPTURE_VIDEO only)
         public int quality = 1;
 
-        // Maximum file size for a recording made by the SoundRecorder application (CAPTURE_VIDEO only)
+        // Maximum file size for a recording made by the SoundRecorder application (CAPTURE_VIDEO, CAPTURE_AUDIO)
         public long maxbytes = 0;
 
         // The array of results to be returned to the javascript callback on success

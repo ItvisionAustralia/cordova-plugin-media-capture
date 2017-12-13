@@ -334,10 +334,12 @@ capturing a video clip, the `CaptureErrorCB` callback executes with a
 
 - __duration__: The maximum duration of an audio sound clip, in seconds.
 
+- __maxbytes__: Specify the maximum allowed size, in bytes.
+
 ### Example
 
-    // limit capture operation to 3 media files, no longer than 10 seconds each
-    var options = { limit: 3, duration: 10 };
+    // limit capture operation to 3 media files, no longer than 10 seconds each, no bigger than 1 Mb
+    var options = { limit: 3, duration: 10, maxbytes: (1 * 1024 * 1024) };
 
     navigator.device.capture.captureAudio(captureSuccess, captureError, options);
 
@@ -389,10 +391,13 @@ capturing a video clip, the `CaptureErrorCB` callback executes with a
 
 - __duration__: The maximum duration of a video clip, in seconds.
 
+
+- __maxbytes__: Specify the maximum allowed size, in bytes.
+
 ### Example
 
-    // limit capture operation to 3 video clips
-    var options = { limit: 3 };
+    // limit capture operation to 3 video clips,  no bigger than 1 Mb
+    var options = { limit: 3, maxbytes: (1 * 1024 * 1024) };
 
     navigator.device.capture.captureVideo(captureSuccess, captureError, options);
 

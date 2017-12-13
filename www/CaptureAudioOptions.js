@@ -27,6 +27,8 @@ var CaptureAudioOptions = function(){
     this.limit = 1;
     // Maximum duration of a single sound clip in seconds.
     this.duration = 0;
+    //Specify the maximum allowed size.
+    this.maxbytes = 0;
 };
 
 module.exports = CaptureAudioOptions;

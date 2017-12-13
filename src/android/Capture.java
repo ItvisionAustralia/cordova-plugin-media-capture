@@ -230,7 +230,7 @@ public class Capture extends CordovaPlugin {
           PermissionHelper.requestPermission(this, req.requestCode, Manifest.permission.READ_EXTERNAL_STORAGE);
       } else {
           Intent intent = new Intent(android.provider.MediaStore.Audio.Media.RECORD_SOUND_ACTION);
-
+          if (req.maxbytes > 0) intent.putExtra("android.provider.MediaStore.extra.MAX_BYTES", req.maxbytes);
           this.cordova.startActivityForResult((CordovaPlugin) this, intent, req.requestCode);
       }
     }
@@ -299,6 +299,7 @@ public class Capture extends CordovaPlugin {
             if(Build.VERSION.SDK_INT > 7){
                 intent.putExtra("android.intent.extra.durationLimit", req.duration);
                 intent.putExtra("android.intent.extra.videoQuality", req.quality);
+                if (req.maxbytes > 0) intent.putExtra("android.intent.extra.sizeLimit", req.maxbytes);
             }
             this.cordova.startActivityForResult((CordovaPlugin) this, intent, req.requestCode);
         }

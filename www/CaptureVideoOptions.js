@@ -27,7 +27,8 @@ var CaptureVideoOptions = function () {
     this.limit = 1;
     // Maximum duration of a single video clip in seconds.
     this.duration = 0;
-    // Video quality parameter, 0 means low quality, suitable for MMS messages, and value 1 means high quality.
+    // for android: Video quality parameter, 0 means low quality, suitable for MMS messages, and value 1 means high quality.
+    // for iOS: 0 = typeHigh, 1 = typeMedium, 2 = typeLow, 3 = type640x80, 4 = typeIframe1280x720, 5 = typeIframe960x540
     this.quality = 1;
 };
 

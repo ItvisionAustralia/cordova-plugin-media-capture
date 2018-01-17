@@ -222,6 +222,7 @@
     // options could contain limit, duration and mode
     // taking more than one video (limit) is only supported if provide own controls via cameraOverlayView property
     NSNumber* duration = [options objectForKey:@"duration"];
+    NSNumber* quality = [options objectForKey:@"quality"];
     NSString* mediaType = nil;
 
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
@@ -256,6 +257,9 @@
         if ([mediaType isEqualToString:(NSString*)kUTTypeMovie]){
             if (duration) {
                 pickerController.videoMaximumDuration = [duration doubleValue];
+            }
+            if (quality) {
+                pickerController.videoQuality = [quality intValue];
             }
             //NSLog(@"pickerController.videoMaximumDuration = %f", pickerController.videoMaximumDuration);
         }
